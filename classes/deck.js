@@ -50,6 +50,11 @@ class Deck {
     this.cards.push(card);
   }
 
+  drawCard(card) {
+    this.addCard(card);
+    this.element.appendChild(card.getElement());
+  }
+
   removeCard(card) {
     let cardIndex = this.getCards().indexOf(card);
     if (cardIndex !== -1) {

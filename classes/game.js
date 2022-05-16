@@ -1,9 +1,11 @@
 class Game {
   constructor() {
-    this.board = new Board();
+    this.board = new Board(this);
     this.element = document.getElementById("root");
     this.generateBoard();
+    this.computer = new Computer(this);
     this.isPlayerTurn = [true, false][Math.floor(Math.random() * 2)];
+    if (!this.isPlayerTurn) this.computerThink();
     this.reloadStat();
     this.showPlayableCards();
     this.addCardClickHandler();
@@ -48,10 +50,12 @@ class Game {
           card.element.classList.add("playable__card");
         }
       });
-    } else
+    } else {
       this.board.playerDeck.getCards().forEach((card) => {
         card.element.classList.add("playable__card");
       });
+    }
+    this.addCardClickHandler();
   }
 
   generateBoard() {
@@ -61,5 +65,13 @@ class Game {
   changeTurn() {
     this.isPlayerTurn = !this.isPlayerTurn;
     this.reloadStat();
+    if (!this.isPlayerTurn) this.computerThink();
+  }
+
+  computerThink() {
+    var that = this;
+    setTimeout(() => {
+      that.computer.think();
+    }, 4000);
   }
 }
