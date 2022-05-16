@@ -20,11 +20,12 @@ class Game {
   }
 
   addCardClickHandler() {
-    if (!this.isPlayerTurn) return;
-
     this.board.playerDeck.getCards().forEach((card) => {
       card.getElement().addEventListener("click", () => {
-        if (card.getElement().classList.contains("playable__card")) {
+        if (
+          this.isPlayerTurn &&
+          card.getElement().classList.contains("playable__card")
+        ) {
           this.playCard(this.board.playerDeck, card);
         }
       });
