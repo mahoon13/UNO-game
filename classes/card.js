@@ -18,6 +18,7 @@ class Card {
   getHideCardElement() {
     let hideCard = this.element;
     hideCard.src = "../assests/card_back.png";
+    hideCard.classList.add("hide");
     return hideCard;
   }
 
