@@ -41,7 +41,7 @@ class Board {
   }
 
   drawCard(deck) {
-    deck.drawCard(deck.createRandomCard());
+    deck.drawCard(Deck.createRandomCard());
     this.game.showPlayableCards();
     this.game.changeTurn();
   }
