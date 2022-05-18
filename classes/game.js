@@ -1,10 +1,14 @@
 class Game {
-  constructor() {
-    this.board = new Board(this);
+  constructor(details = null) {
+    this.board = new Board(this, details);
     this.element = document.getElementById("root");
     this.generateBoard();
     this.computer = new Computer(this);
-    this.isPlayerTurn = [true, false][Math.floor(Math.random() * 2)];
+    if (!details) {
+      this.isPlayerTurn = [true, false][Math.floor(Math.random() * 2)];
+    } else {
+      this.isPlayerTurn = details.isPlayerTurn;
+    }
     if (!this.isPlayerTurn) this.computerThink();
     this.reloadStat();
     this.showPlayableCards();
@@ -73,5 +77,18 @@ class Game {
     setTimeout(() => {
       that.computer.think();
     }, 4000);
+  }
+
+  getDetails() {
+    return {
+      issPlayerTurn: this.isPlayerTurn,
+      playerCards: this.board.playerDeck
+        .getCards()
+        .map((card) => card.getName()),
+      computerCards: this.board.computerDeck
+        .getCards()
+        .map((card) => card.getName()),
+      lastCardName: this.board.table.getLastCard().getName(),
+    };
   }
 }

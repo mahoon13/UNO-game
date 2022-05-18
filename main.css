@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: unset;
+    align-items: unset;
+    border: 0;
+    outline: unset;
+    font-size: 18px;
+}
+
+:root {
+    --dark: hsl(0, 0%, 20%);
+    --light: #fff;
+}
+
+body {
+    background-color: var(--dark);
+}
+
+.row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.table {
+    width: 350px;
+    height: 220px;
+    background: url("../assests/table.png") center no-repeat;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deck {
+    display: flex;
+    gap: 1rem;
+    max-width: 100%;
+}
+
+.card {
+    width: 80px;
+}
+
+.card:not(.card.playable__card):not(.table .card):not(.hide) {
+    filter: grayscale(0.7);
+}
+
+.card.playable__card {
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.card.playable__card:hover {
+    transform: translateY(10px);
+}
+
+.stat {
+    position: fixed;
+    top: 2rem;
+    left: 1rem;
+    color: var(--light);
+}
+
+.stat::before {
+    content: "Turn:";
+    padding-right: 5px;
+}
+
+.draw__card {
+    width: 200px;
+    height: 150px;
+    color: white;
+
+    background: url("../assests/draw_card.png") no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.draw__card::after {
+    content: "Draw Card";
+    position: absolute;
+    transform: translate(70px, 160px);
+}

@@ -1,9 +1,21 @@
 class Deck {
-  constructor(cardsCount = 8, hideCards = false) {
+  constructor(cardNames = null, cardsCount = 8, hideCards = false) {
     this.cardsCount = cardsCount;
     this.cards = [];
-    this.generateCards(this.cardsCount);
+    this.hideCards = hideCards;
+    if (!cardNames) {
+      this.generateCards(this.cardsCount);
+    } else {
+      this.cards = cardNames.map((name) => Deck.createCardByName(name));
+    }
     this.element = this.createElement(hideCards);
+  }
+
+  static createCardByName(name) {
+    let cardColor = name.slice(0, 1);
+    let cardNumber = name.slice(2);
+    let card = new Card(name, cardColor, cardNumber);
+    return card;
   }
 
   createElement(hideCards) {
@@ -31,7 +43,7 @@ class Deck {
     }
   }
 
-  createRandomCard() {
+  static createRandomCard() {
     const colors = ["b", "g", "r", "y"];
     let randomColor = colors[Math.floor(Math.random() * colors.length)];
     let randomNumber = Math.floor(Math.random() * 9);
@@ -52,7 +64,9 @@ class Deck {
 
   drawCard(card) {
     this.addCard(card);
-    this.element.appendChild(card.getElement());
+    let cardElement = card.getElement();
+    if (this.hideCards) card.getHideCardElement();
+    this.element.appendChild(cardElement);
   }
 
   removeCard(card) {

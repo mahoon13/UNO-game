@@ -25,4 +25,8 @@ class Card {
   getElement() {
     return this.element;
   }
+
+  getName() {
+    return this.name;
+  }
 }
