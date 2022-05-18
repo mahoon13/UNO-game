@@ -1,8 +1,14 @@
 class Board {
   constructor(game, details = null) {
-    this.playerDeck = new Deck(details.playerCards);
-    this.computerDeck = new Deck(details.computerCards, 8, true);
-    this.table = new Table(details.lastCardName);
+    if(details) {
+      this.playerDeck = new Deck(details.playerCards);
+      this.computerDeck = new Deck(details.computerCards, 8, true);
+      this.table = new Table(details.lastCardName);
+    } else {
+      this.playerDeck = new Deck();
+      this.computerDeck = new Deck(null, 8, true);
+      this.table = new Table();
+    }
     this.game = game;
     this.element = this.createElement();
   }
