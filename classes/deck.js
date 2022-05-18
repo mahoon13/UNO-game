@@ -38,7 +38,7 @@ class Deck {
 
   generateCards(cardsCount) {
     for (let i = 0; i < cardsCount; i++) {
-      let randomCard = this.createRandomCard();
+      let randomCard = Deck.createRandomCard();
       this.addCard(randomCard);
     }
   }
