@@ -27,7 +27,7 @@ class Table {
   setLastCard(card) {
     this.lastCard = card;
     let lastCard = new Image();
-    lastCard.src = "../assests/" + card.name + ".png";
+    lastCard.src = "./assests/" + card.name + ".png";
     lastCard.classList.add("card");
     lastCard.classList.add("last__card");
     this.element.innerHTML = "";
