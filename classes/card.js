@@ -3,7 +3,7 @@ class Card {
     this.name = name;
     this.color = color;
     this.number = number;
-    this.cardImagePath = "../assests/" + name + ".png";
+    this.cardImagePath = "./assests/" + name + ".png";
     this.element = this.createElement();
   }
 
@@ -17,7 +17,7 @@ class Card {
 
   getHideCardElement() {
     let hideCard = this.element;
-    hideCard.src = "../assests/card_back.png";
+    hideCard.src = "./assests/card_back.png";
     hideCard.classList.add("hide");
     return hideCard;
   }
