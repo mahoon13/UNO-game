@@ -34,7 +34,7 @@ body {
 .table {
     width: 350px;
     height: 220px;
-    background: url("../assests/table.png") center no-repeat;
+    background: url("./assests/table.png") center no-repeat;
     background-size: cover;
 
     display: flex;
@@ -82,7 +82,7 @@ body {
     height: 150px;
     color: white;
 
-    background: url("../assests/draw_card.png") no-repeat;
+    background: url("./assests/draw_card.png") no-repeat;
     background-size: contain;
     cursor: pointer;
 }
